@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <b>CSCI 4370 offers an introduction to database design and the utilization of database management systems in applications. The course also provides an introduction to inner workings of database management systems. Based on <i>Database System Concepts, Seventh Edition, By Avi Silberschatz, Henry F. Korth and S. Sudarshan (2019)</i>.<sub></b>
+  <b>INFO 4000 focuses on advanced applications of artificial intelligence, machine learning, and deep learning. The course covers API development, data integration, SQL databases, transfer learning with pretrained models, AI agents and workflow automation, audio analytics, MQTT-based communication, and reinforcement learning. Students gain hands-on experience developing applications using frameworks such as PyTorch and Hugging Face with an emphasis on practical implementation and independent projects.<sub></b>
 </p>
 
 <br />
