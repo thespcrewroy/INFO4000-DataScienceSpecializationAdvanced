@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center">Database Management (CSCI 4370)</h1>
+<h1 align="center">Experiential Data Science Specialization - Advanced</h1>
 <p align="center">
 <a href="https://github.com/thespcrewroy/CSCI-4370/graphs/framework"><img alt="Framework" src="https://img.shields.io/badge/Markdown-grey.svg" height="20"/></a>
 <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-red.svg" height="20"/></a>
