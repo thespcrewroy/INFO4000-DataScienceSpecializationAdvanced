@@ -38,7 +38,7 @@
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#personnel)
 
 ## Personnel
-* Professor: Dr. Sami Menik, PhD <br>
+* Professor: Dr. Jagannath Rao <br>
 * TA: Triparna <br>
 * TA: Braveenan <br>
 
