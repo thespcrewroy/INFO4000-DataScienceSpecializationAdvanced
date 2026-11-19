@@ -135,3 +135,11 @@
 </p>
 
 > Data Visualization: Generates a sine wave plot using Matplotlib and displays it within the Streamlit app.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-18.jpg""/>
+</p>
+
+> Typical Architecture: Streamlit as Frontend and API as Backend
