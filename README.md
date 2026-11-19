@@ -54,6 +54,7 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 * Jupyter Lab
 * VSCode
 * Virtual Environments (`.venv`, `.toml`, `uv_lock`)
+* Packages: `numpy`
 
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
