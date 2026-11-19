@@ -39,22 +39,21 @@
 
 ## Personnel
 * Professor: Dr. Jagannath Rao <br>
-* TA: Triparna <br>
-* TA: Braveenan <br>
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#prerequisites)
 
 ## Prerequisites
-CSCI 2720 (Data Structures) or CSCI 2725 (Data Structures for Data Science)
+INFO 3000 (Experiential Data Science Specialization - Intermediate)
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#directory-structure)
 
 ## Materials
-* Java 21.0.8 LTS 2025-07-15 (or latest version)
-* MySQL 8 database management system
-* Apache Maven 3.9.11 (or latest version)
-* Docker version 28.3.2, build 578ccf6 (or latest version)
-* Unix-Based Computer is preffered (macOS, linux, etc.)
+* Bash CLI
+* UV Package Manager
+* Python 3.12+
+* Jupyter Lab
+* VSCode
+* Virtual Environments (venv, toml, uv_lock)
 
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
