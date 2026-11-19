@@ -126,7 +126,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-16.jpg""/>
 </p>
 
-> Widgets: Features a slider that allows the user to select a value between 0 and 100, and is then displayed below the slider.
+> Widgets: Features a slider that allows the user to select a value between 0 and 100, displayed below the slider.
 
 <br>
 
