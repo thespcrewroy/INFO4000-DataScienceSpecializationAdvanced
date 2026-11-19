@@ -51,9 +51,10 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 * `uv` Package Manager
 * Python 3.12+
 * Jupyter Lab
+* Flask
 * VSCode
 * Virtual Environments (`.venv`, `.toml`, `uv_lock`)
-* Packages: `numpy`, `matplotlib`, `plotly`, `altair`
+* Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`
 
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
