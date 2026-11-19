@@ -15,7 +15,7 @@
 <br />
 
 <p align="center">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/roadmap1.png" alt="Demo" width="800" />
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/roadmap.png" alt="Demo" width="800" />
 </p>
 
 <details>
