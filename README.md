@@ -32,13 +32,12 @@
 - [Topics](#topics)
 - [Grading Weights](#grading-weights)
 - [Late Submission Policy](#late-submission-policy)
-- [ReGrade Policy](#regrade-policy)
 </details>
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#personnel)
 
 ## Personnel
-* Professor: Dr. Jagannath Rao <br>
+Professor: Dr. Jagannath Rao <br>
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#prerequisites)
 
@@ -59,47 +58,39 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
 ## Topics
-|  Chap  |               Topic                    |
-| -------| -------------------------------------- |
-| `ch01` | `Introduction`                         |
-| `ch02` | `Introduction to the Relational Model` |
-| `ch03` | `Intermediate SQL`                     |
-| `ch04` | `Introduction to the Relational Model` |
-| `ch06` | `Database Design Using The E-R Model`  |
-| `ch07` | `Relational Database Design`           |
-| `ch09` | `Application Development`              |
-| `ch10` | `Big Data`                             |
-| `ch11` | `Data Analysis`                        |
-| `ch12` | `Physical Storage Systems`             |
-| `ch13` | `Data Storage Structures`              |
-| `ch14` | `Indexing`                             |
-| `ch15` | `Query Processing`                     |
-| `ch16` | `Query Optimization`                   |
-| `ch17` | `Transactions`                         |
+|  Week  |                                  Topic                                  |
+|--------|-------------------------------------------------------------------------|
+| `wk01` | `Python Environments and Streamlit`                                     |
+| `wk02` | `Data Integration, APIs, and Transfer Learning`                         |
+| `wk03` | `Pretrained Models and Fine-Tuning`                                     |
+| `wk04` | `Vision Transformers, LLMs, and Retrieval-Augmented Generation (RAG)`   |
+| `wk05` | `MQTT Communication and Reinforcement Learning`                         |
+| `wk06` | `Gymnasium and Deep Q-Learning (DQN)`                                   |
+| `wk07` | `Audio Analytics and Physics-Informed Neural Networks (PINNs)`          |
+| `wk08` | `Physics-Informed Models and Digital Twins`                             |
+| `wk09` | `Anomaly Detection, Digital Twins, and AI Agents`                       |
+| `wk10` | `Agentic AI, Deep Reinforcement Learning, and PINN Control`             |
+| `wk11` | `Model Context Protocol (MCP) and Tool-Using AI Agents`                 |
+| `wk12` | `MCP Servers, Clients, and Agentic Application Development`             |
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#grading)
 
 ## Grading Weights
 |      Tag        | Weight |
 | --------------- | ------ |
-| `Activities`    | `14%`  |
-| `Projects`      | `30%`  |
-| `Exam 1`        | `14%`  |
-| `Exam 2`        | `14%`  |
-| `Exam 3`        | `14%`  |
-| `Final Project` | `14%`  |
+| `Exercises`     | `15%`  |
+| `Homework`      | `15%`  |
+| `Projects`      | `55%`  |
+| `Exam`          | `15%`  |
 
 ## Letter Grade Breakdown
 | Letter |   Score    |
 | ------ | ---------- |
-| `A`    | `[93, ∞)`  |
-| `A-`   | `[90, 93)` |
-| `B+`   | `[87, 90)` |
-| `B`    | `[83, 87)` |
-| `B-`   | `[80, 83)` |
-| `C+`   | `[77, 80)` |
-| `C`    | `[73, 77)` |
-| `C-`   | `[70, 73)` |
+| `A`    | `[90, ∞)`  |
+| `B+`   | `[85, 90)` |
+| `B`    | `[80, 85)` |
+| `C`    | `[75, 80)` |
+| `C-`   | `[70, 75)` |
 | `D`    | `[60, 70)` |
 | `F`    | `[0, 60)`  |
 
@@ -111,16 +102,6 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 | `<= 24hrs`       | `pointsEarned - 10`       |
 | `24hrs to 48hrs` | `pointsEarned - 20`       |
 | `>= 48hrs`       | `0`                       |
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#regrade-policy)
-
-## ReGrade Policy
-
-Please send an email using your official UGA email account including the instructor and all
-TA(s), if you think there is a mistake in a grade you received. Please use a descriptive subject
-that begins with `[4370][grading issue]` for undergraduates and `[6370][grading issue]` for
-graduates without quotes followed by the name of the assignment and include a brief but
-specific description about the grading issue in your email.
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#footer)
 
