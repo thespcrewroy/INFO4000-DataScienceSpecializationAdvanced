@@ -48,11 +48,12 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 
 ## Materials
 * Bash CLI
+* VSCode
 * `uv` Package Manager
 * Python 3.12+
 * Jupyter Lab
 * Flask
-* VSCode
+* Postman
 * Virtual Environments (`.venv`, `.toml`, `uv_lock`)
 * Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`
 
