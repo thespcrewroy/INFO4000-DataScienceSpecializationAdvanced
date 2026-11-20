@@ -55,7 +55,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-7.jpg""/>
 </p>
 
-> Finetuning: the first way to use pretrained models in CNN applications. Instead of random initialization, we initialize the network with a pretrained network. Rest of the training looks as usual.
+> Finetuning: the first way to use pretrained models in CNN applications. Instead of random initialization, we initialize the network with a pretrained network. However, we unfreeze some or all pre-trained layers to update their weights on new data. Thus, the rest of the training looks as usual.
 
 <br>
 
@@ -65,5 +65,23 @@
 
 > Feature Extraction: the second way to use pretrained models in ConvNet applications. Here, we will freeze the weights for all the Convolution layers. The last or last few fully connected layers are replaced with a new one with random weights and trained.
 
+<br>
 
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-9.jpg""/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-10.jpg""/>
+</p>
+
+> In the picture above, we freeze all the layers or parameters in the features section of this `efficientnet_b0` model. Freeze means the weights are not trainable OR as we know it `require_grad = False`. When using a pretrained model, it's important that your custom data going into the model is pre-processed and normalized in the same way as the original training data that went into the model.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-10.jpg""/>
+</p>
+
+> The Transformer architecture has two main parts: the encoder and the decoder. The encoder reads the entire input text and understands its meaning by paying attention to all the words and their relationships. The decoder then takes this understanding and generates new text, word by word, by focusing on both the input text and what it has generated so far.
 
