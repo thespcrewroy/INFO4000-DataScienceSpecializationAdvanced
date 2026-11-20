@@ -54,8 +54,12 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 * Jupyter Lab
 * Flask
 * Postman
-* Virtual Environments (`.venv`, `.toml`, `uv_lock`)
-* Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`
+* SQLite3
+* SciKit-Learn
+* PyTorch
+* Hugging Face
+* Virtual Environments (`.venv`, `.toml`, `uv.lock`)
+* Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`, `requests`, `pandas`, `sqlite3`, `torch`, `torchvision`, `torchinfo`
 
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
