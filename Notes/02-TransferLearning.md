@@ -80,7 +80,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-10.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-11.jpg""/>
 </p>
 
 > The Transformer architecture has two main parts: the encoder and the decoder. The encoder reads the entire input text and understands its meaning by paying attention to all the words and their relationships. The decoder then takes this understanding and generates new text, word by word, by focusing on both the input text and what it has generated so far.
