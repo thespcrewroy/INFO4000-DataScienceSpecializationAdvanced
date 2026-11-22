@@ -54,7 +54,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-7.jpg"/>
 </p>
 
-> Model families by type: encoder only models (ALBERT, BERT, DistilBERT, ELECTRA, RoBERTa) handle sentence classification, named entity recognition, and extractive question answering. Decoder only models (CTRL, GPT, GPT-2, Transformer XL) handle text generation. Encoder decoder models (BART, T5, Marian, mBART) handle summarization, translation, and generative question answering.
+> Model families by type: encoder only models (ALBERT, BERT, DistilBERT, ELECTRA, RoBERTa) handle sentence classification, named entity recognition, and extractive question answering. Decoder only models (CTRL, GPT, GPT-2, Transformer XL) handle text generation. Encoder decoder models (BART, T5, Marian, mBART) handle summarization, translation, and generative answering.
 
 <br>
 
