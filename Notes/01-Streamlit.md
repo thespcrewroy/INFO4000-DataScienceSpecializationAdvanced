@@ -1,4 +1,4 @@
-# Package Managers, Environments, & Streamlit
+# Package Managers, Python Environments, & Streamlit
 
 ## Key Course Topics
 
