@@ -42,7 +42,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/4-3.jpg"/>
 </p>
 
-> The knowledge gap problem: asked for an 11 letter fruit ending in "o", the LLM confidently answers "Guanabano", which only has 9 letters. LLMs only know what they were trained on, so without outside information they can give confident but wrong or outdated answers.
+> The knowledge gap problem: asked for an 11 letter fruit ending in "o", the LLM confidently answers "Guanabano", which only has 9 letters. LLMs only know what they were trained on, so without outside info they can give confidently wrong outdated answers.
 
 <br>
 
