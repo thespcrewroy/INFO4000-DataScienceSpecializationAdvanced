@@ -62,7 +62,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-8.jpg"/>
 </p>
 
-> The 3 step process for NLP apps: raw text ("This course is amazing") goes into the tokenizer, which turns it into input IDs (101 and 102 mark the start and end). The model outputs logits ([-4.3630, 4.6859]), and post processing converts them into predictions (POSITIVE 99.89%).
+> The 3 step process for NLP apps: raw text ("This course is amazing") goes into the tokenizer, which turns it into input IDs (101 and 102 mark the start and end). The model outputs logits ([-4.3630, 4.6859]), and post processing converts them into predictions.
 
 <br>
 
