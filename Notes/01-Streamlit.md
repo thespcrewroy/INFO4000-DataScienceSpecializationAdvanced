@@ -3,7 +3,7 @@
 ## Key Course Topics
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-1.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-1.jpg"/>
 </p>
 
 > Creating a unified view dataset via data augmentation from a variety of similar yet disparate sources.
@@ -11,7 +11,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-2.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-2.jpg"/>
 </p>
 
 > Dashboarding with `streamlit`
@@ -19,7 +19,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-3.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-3.jpg"/>
 </p>
 
 > Building vizualization systems like the cool one above.
@@ -27,7 +27,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-4.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-4.jpg"/>
 </p>
 
 > How to use and build APIs (Application Programming Interfaces).
@@ -35,7 +35,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-5.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-5.jpg"/>
 </p>
 
 > Transfer learning in an image classification context.
@@ -43,7 +43,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-6.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-6.jpg"/>
 </p>
 
 > Freezing vs. Fine-Tuning
@@ -51,7 +51,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-7.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-7.jpg"/>
 </p>
 
 > Transfer Learning in Natural Langauge Processing.
@@ -59,7 +59,7 @@
 ## Modern AI Tools: Agents and AgenticAI
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-8.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-8.jpg"/>
 </p>
 
 > AI Tools
@@ -67,7 +67,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-9.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-9.jpg"/>
 </p>
 
 > AI Agent
@@ -75,7 +75,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-10.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-10.jpg"/>
 </p>
 
 > One AI Agent in Agentic AI ecosystem.
@@ -83,7 +83,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-11.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-11.jpg"/>
 </p>
 
 > Audio Signals
@@ -91,7 +91,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-12.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-12.jpg"/>
 </p>
 
 > Feature Extraction of Audio Signals
@@ -99,7 +99,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-13.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-13.jpg"/>
 </p>
 
 > Audio Analytics Applications
@@ -107,7 +107,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-14.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-14.jpg"/>
 </p>
 
 > Communication Technology Applications
@@ -115,7 +115,7 @@
 ## App Development With Streamlit
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-15.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-15.jpg"/>
 </p>
 
 > Streamlit: Creates a simple Streamlit app with a title and a greeting message.
@@ -123,7 +123,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-16.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-16.jpg"/>
 </p>
 
 > Widgets: Features a slider that allows the user to select a value between 0 and 100, displayed below the slider.
@@ -131,7 +131,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-17.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-17.jpg"/>
 </p>
 
 > Data Visualization: Generates a sine wave plot using Matplotlib and displays it within the Streamlit app.
@@ -139,7 +139,7 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-18.jpg""/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-18.jpg"/>
 </p>
 
 > Typical Architecture: Streamlit as Frontend and API as Backend
