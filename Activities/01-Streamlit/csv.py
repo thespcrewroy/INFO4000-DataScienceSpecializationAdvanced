@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 from pathlib import Path
 
-
-
 """
 This is a simple Streamlit app that reads a CSV file and displays 
 it in a table, bar chart, and a line chart.
