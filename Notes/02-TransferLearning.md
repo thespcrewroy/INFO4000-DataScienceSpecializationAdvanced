@@ -1,4 +1,4 @@
-# APIs, Data Augmentation, & Transfer Learning
+# Data Augmentation, APIs, & Transfer Learning
 
 ## SQL and Relational Databases
 
