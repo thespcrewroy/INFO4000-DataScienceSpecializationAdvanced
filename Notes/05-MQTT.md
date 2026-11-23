@@ -203,7 +203,7 @@ Neither is best everywhere. Picking the better direction in each state gives the
 | Best action $\pi(s)$ | Left | Left | Left | Right |
 | Return | 50 | 25 | 12.5 | 20 |
 
-For negative rewards, discounting has the opposite effect: pushing a penalty into the future makes it smaller, like postponing a payment you owe.
+Discounting has the opposite effect for negative awards. Pushing a penalty into the future makes it smaller.
 
 ### The Q-Function
 
