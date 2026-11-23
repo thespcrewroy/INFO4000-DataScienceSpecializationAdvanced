@@ -90,6 +90,158 @@ env.close()
 
 A Q-table only works for discrete state spaces, such as a grid, a maze, or Blackjack. In MountainCar, the state is the car's position and velocity, which are continuous, so there are infinitely many states and similar states should behave similarly. There, a neural network is used as a function approximator that takes a state as input and outputs Q values.
 
+## Q-Learning by Hand
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-1.jpg"/>
+</p>
+
+> One Q-value update: the agent is in state $S_1$, takes action $a_1$ (current $Q_1 = 4$), receives reward $R_1 = 2$, and lands in $S_2$. The best action in $S_2$ is $a_4$ with $Q_4 = 7$, so it becomes the target. With $\alpha = \gamma = 1$ for simplicity, $Q_1 = 4 + (2 + 7 - 4) = 9$.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-2.jpg"/>
+</p>
+
+> Gridworld exercise: the agent starts at the star and can move up, down, left, or right. The crossed out column is off limits, and hitting a wall leaves the agent where it is. The orange square is dangerous (−5) and the square below it is the goal (+10). Every other square gives 0. An episode ends at the goal or after 10 moves, with $\gamma = 0.5$ and $\alpha = 0.5$. Both episodes are worked out step by step in the Worked Examples below.
+
+## Deep Q-Networks (DQN)
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-3.jpg"/>
+</p>
+
+> Q-learning vs. deep Q-learning: Q-learning looks up a state and action in a Q-table to get one Q value. Deep Q-learning feeds only the state into a neural network, which outputs a Q value for every action in one forward pass. The agent then picks the action with the largest value. This works for continuous state spaces, where a table would need infinitely many rows.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-4.jpg"/>
+</p>
+
+> Experience replay: as the agent acts, each result is saved as an $(s, a, r, s')$ tuple in the experience replay buffer. Training samples random batches from the buffer instead of learning only from the latest step, which breaks up the correlation between consecutive steps and reuses past experience. In Python, a `deque` with a maximum length works well, since it drops the oldest experience when it's full.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-5.jpg"/>
+</p>
+
+> DQN training step: a batch is sampled from the replay buffer. The trainable Q network takes $s_t$ and predicts a Q value for each action, and the value for the action actually taken (0.2 for $a_0$) is the prediction. The fixed target network takes $s_{t+1}$, and its largest output (1.2) builds the target $r_t + \gamma \max Q$, or just $r_t$ if the episode ended. The MSE loss between prediction and target updates the Q network, and every so many episodes its weights are copied into the target network.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-6.jpg"/>
+</p>
+
+> Full DQN loop: the agent picks actions with $\text{argmax}_a Q(s, a; \theta)$, and every transition $(s, a, r, s')$ is stored in replay memory. The Q network's prediction $Q(s, a; \theta)$ and the target network's $\max_{a'} Q(s', a'; \theta^-)$ feed the DQN loss, and the gradient of that loss trains only the Q network. The target network is a copy that is refreshed every N updates, which keeps the target from moving with every training step.
+
+## Continuous Action Spaces
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-7.jpg"/>
+</p>
+
+> Why continuous actions are hard: a pick and place robot arm has countless joint angles (a continuous state space) and can apply any amount of force to each motor (a continuous action space). It has to choose exact values, such as rotating a joint 32.5 degrees, so there is no way to list every action and pick the one with the highest Q value like DQN does.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-8.jpg"/>
+</p>
+
+> Actor critic in a nutshell: the actor plays ("I rotate the piece") and the critic judges the move ("really bad action"). Policy gradient methods adjust the policy directly from feedback, and actor critic methods add a critic that estimates values so the actor learns more efficiently, like an athlete with a coach.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-9.jpg"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-10.jpg"/>
+</p>
+
+> How actor critic works: the actor network maps states to actions (unlike DQN, which maps states to Q values). For continuous actions, it outputs the mean and standard deviation of a Gaussian distribution, and the action is sampled from it. The critic network estimates the value of the state, meaning the expected cumulative reward, and sends that feedback to the actor so it can favor actions that lead to higher values.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-11.jpg"/>
+</p>
+
+> Proximal Policy Optimization (PPO): the actor π network chooses actions and the critic A network sees the resulting state and reward. The critic is updated to minimize its MSE loss, and the actor is updated to maximize the advantage, but the change between the old and new policy is clipped to a small range. Like a driving instructor who only allows small, safe adjustments after each lesson, this keeps one lucky result from overhauling the whole policy. The math is worked out in the Worked Examples below.
+
+## Stable Baselines3
+
+Stable Baselines3 (SB3) is a PyTorch based library with reliable, ready to use versions of RL algorithms such as PPO, A2C, SAC, and TD3. It works directly with Gymnasium environments and comes with sensible default hyperparameters. Install it with `uv add "stable-baselines3[extra]"` (Python 3.12 works best).
+
+```python
+import gymnasium as gym
+from stable_baselines3 import PPO
+from stable_baselines3.common.evaluation import evaluate_policy
+
+env = gym.make("CartPole-v1")
+model = PPO("MlpPolicy", env, verbose=1)  # MlpPolicy = fully connected network
+model.learn(total_timesteps=10_000)
+
+mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=10)
+print(f"Mean reward: {mean_reward:.1f} +/- {std_reward:.1f}")
+
+model.save("ppo_cartpole")
+```
+
+`evaluate_policy` runs the trained model for several episodes and reports its average reward. Training progress can be plotted with TensorBoard or Matplotlib.
+
+## Building Your Own Environment
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-12.jpg"/>
+</p>
+
+> A custom trading environment: the state is the account balance, shares held, prices, and technical indicators. The agent (which could use DQN, PPO, A2C, SAC, DDPG, and others) chooses to buy, hold, or sell, and the reward is profit or loss. No ready made environment exists for a problem like this, so you build one and define its state space, action space, reward function, and dynamics yourself.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/6-13.jpg"/>
+</p>
+
+> Simulating the real world: (A) human driving data from cameras, steering, and speed sensors builds a data driven simulation, where a virtual agent learns by trying actions safely and cheaply. (B) The policy learned in simulation is then deployed on a real car, which sends control commands and receives real world observations. Custom environments make it possible to train for scenarios that would be dangerous, expensive, or slow to test in reality.
+
+### Custom Environment Skeleton
+
+A custom environment is a class that inherits from `gymnasium.Env`, defines its spaces in `__init__`, and implements `reset()` and `step()`. Here is the Mineral Explorer as an environment (states are numbered 0 to 5 here instead of 1 to 6):
+
+```python
+import gymnasium as gym
+from gymnasium import spaces
+
+class MineralExplorerEnv(gym.Env):
+    def __init__(self):
+        super().__init__()
+        self.observation_space = spaces.Discrete(6)  # 6 states
+        self.action_space = spaces.Discrete(2)       # 0 = left, 1 = right
+        self.rewards = [100, 0, 0, 0, 0, 40]
+
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+        self.state = 3  # state 4 in the slides
+        return self.state, {}
+
+    def step(self, action):
+        self.state += -1 if action == 0 else 1
+        reward = self.rewards[self.state]
+        terminated = self.state in (0, 5)  # either end of the row
+        return self.state, reward, terminated, False, {}
+```
+
+Other useful spaces are `spaces.Box(low, high, shape)` for continuous values like position and velocity, and `spaces.Dict({...})` for states made of several named parts. An optional `render()` method can display the environment as text or graphics.
+
+> Note: like the earlier slides, the custom environment slides say `step()` returns four values ending in `done`. Gymnasium environments should return five, `observation, reward, terminated, truncated, info`, and `reset()` should return `(observation, info)`, or tools like SB3 will raise errors.
+
 ## Worked Examples
 
 ### The Mineral Explorer
@@ -235,3 +387,115 @@ If the agent always picked the action with the highest Q value from the start, i
 - **Exploits** with probability $1 - \varepsilon$, taking the action with $\max_a Q(s, a)$
 
 For example, with $\varepsilon = 0.1$, the agent takes a random action about 1 in every 10 steps and otherwise follows its current best guess.
+
+### Gridworld: Two Episodes by Hand
+
+This works through the gridworld exercise above with $\gamma = 0.5$ and $\alpha = 0.5$. Squares are written as (row, column), with the start at (0, 1), danger at (1, 3), and the goal at (2, 3). All Q values start at 0. Here the reward comes from the square the agent moves into, and the goal is terminal, so its Q values stay 0.
+
+$$
+Q(s, a) \leftarrow Q(s, a) + 0.5 \big( R + 0.5 \max_{a'} Q(s', a') - Q(s, a) \big)
+$$
+
+**Episode 1: Right, Right, Down, Down**
+
+| Move | From → To | $R$ | $\max Q(s')$ | Update | New Q |
+|---|---|---|---|---|---|
+| Right | (0,1) → (0,2) | 0 | 0 | $0 + 0.5(0 + 0 - 0)$ | 0 |
+| Right | (0,2) → (0,3) | 0 | 0 | $0 + 0.5(0 + 0 - 0)$ | 0 |
+| Down | (0,3) → (1,3) | −5 | 0 | $0 + 0.5(-5 + 0 - 0)$ | **−2.5** |
+| Down | (1,3) → (2,3) | +10 | 0 (goal) | $0 + 0.5(10 + 0 - 0)$ | **5.0** |
+
+**Episode 2: Down, Right, Down, Right**
+
+| Move | From → To | $R$ | $\max Q(s')$ | Update | New Q |
+|---|---|---|---|---|---|
+| Down | (0,1) → (1,1) | 0 | 0 | $0 + 0.5(0 + 0 - 0)$ | 0 |
+| Right | (1,1) → (1,2) | 0 | 0 | $0 + 0.5(0 + 0 - 0)$ | 0 |
+| Down | (1,2) → (2,2) | 0 | 0 | $0 + 0.5(0 + 0 - 0)$ | 0 |
+| Right | (2,2) → (2,3) | +10 | 0 (goal) | $0 + 0.5(10 + 0 - 0)$ | **5.0** |
+
+After two episodes, only the moves right next to the danger and the goal have learned anything. Moving down into the danger square is now −2.5, while moving into the goal from either side is 5.0.
+
+**What a third episode would add:** repeating Episode 2, the move Down from (1,2) to (2,2) now sees $\max Q(2,2) = 5.0$:
+
+$$
+Q\big((1,2), \text{Down}\big) = 0 + 0.5 \big( 0 + 0.5 \times 5.0 - 0 \big) = 1.25
+$$
+
+The goal's value spreads backward one square per episode, which is why Q-learning needs many episodes to converge.
+
+### DQN: One Training Step
+
+From the class example: there are 4 actions, $\gamma = 0.95$, and one experience from the replay buffer is (state 100, action 0, reward 5, next state 102).
+
+| | Action 0 | Action 1 | Action 2 | Action 3 |
+|---|---|---|---|---|
+| Q network output for the current state | **2.3** | −1.5 | 0.8 | 0.1 |
+| Target network output for the next state | **3.1** | 0.5 | 2.2 | −0.3 |
+
+**1. Prediction:** the action taken was 0, so the Q network's prediction is 2.3. The other three outputs aren't used in this step.
+
+**2. Target:** the largest target network value for the next state is 3.1:
+
+$$
+y = R + \gamma \max_{a'} Q_{target}(s', a') = 5 + 0.95 \times 3.1 = 7.945
+$$
+
+If the next state were terminal (done = True), the target would just be the reward, $y = 5$.
+
+**3. Loss:**
+
+$$
+L = \frac{1}{2} (y - Q(s, a))^2 = \frac{1}{2} (7.945 - 2.3)^2 = \frac{1}{2} (5.645)^2 \approx 15.93
+$$
+
+Backpropagation uses this loss to push the Q network's prediction for action 0 up toward 7.945. The target network isn't trained. It only gets a fresh copy of the Q network's weights every so many episodes.
+
+### PPO: The Critic, the Advantage, and Clipping
+
+**Critic target and TD error.** The critic $V_\phi$ estimates how good a state is. After taking an action and seeing reward $r_t$ and the next state:
+
+$$
+Q(s_t, a) = r_t + \gamma V_\phi(s_{t+1})
+\qquad
+\delta_t = Q(s_t, a) - V_\phi(s_t)
+$$
+
+The critic is trained to make $V_\phi(s_t)$ closer to $Q(s_t, a)$ by minimizing $\delta_t^2$.
+
+**Example:** $r_t = 1$, $\gamma = 0.9$, $V_\phi(s_t) = 5$, $V_\phi(s_{t+1}) = 6$
+
+$$
+Q(s_t, a) = 1 + 0.9 \times 6 = 6.4
+\qquad
+\delta_t = 6.4 - 5 = 1.4
+\qquad
+\text{critic loss} = 1.4^2 = 1.96
+$$
+
+**Advantage.** The TD error doubles as an estimate of the advantage, $\hat{A}_t \approx \delta_t$: how much better the action turned out than the critic expected. Here $\hat{A}_t = 1.4 > 0$, so the action helped more than expected. If $\hat{A}_t < 0$, it hurt. This is like asking whether a student scored above or below the class average, instead of just looking at the raw score, which can be high or low by luck.
+
+**Clipping the actor update.** The probability ratio compares the new and old policies for the action taken:
+
+$$
+r_t = \frac{\pi_{new}(a_t \mid s_t)}{\pi_{old}(a_t \mid s_t)}
+$$
+
+A ratio of 1 means no change, 1.5 means the action became 50% more likely, and 0.5 means it became half as likely. PPO maximizes
+
+$$
+\min\Big( r_t \hat{A}_t, \ \text{clip}(r_t, 1 - \epsilon, 1 + \epsilon) \, \hat{A}_t \Big)
+$$
+
+which stops rewarding changes beyond $\pm\epsilon$. With $\epsilon = 0.2$, the allowed range is 0.8 to 1.2:
+
+| $\hat{A}_t$ | $r_t$ | Unclipped $r_t \hat{A}_t$ | Clipped | PPO uses (the min) | Meaning |
+|---|---|---|---|---|---|
+| +2 | 1.1 | 2.2 | $1.1 \times 2 = 2.2$ | 2.2 | Good action, small increase, fully counted |
+| +2 | 2.5 | 5.0 | $1.2 \times 2 = 2.4$ | 2.4 | Overreacting, so the benefit is capped |
+| −2 | 0.9 | −1.8 | $0.9 \times -2 = -1.8$ | −1.8 | Bad action, made a bit rarer, fully counted |
+| −2 | 0.2 | −0.4 | $0.8 \times -2 = -1.6$ | −1.6 | Cut too far, so there's no extra credit past 0.8 |
+
+In every case, pushing the ratio past the guardrail earns nothing more, so each update stays small and learning stays steady.
+
+> Note: the slide's intuition examples list ratios of −0.4 and −0.8 for bad actions. A probability ratio can't be negative, since it's one probability divided by another, so the table above uses ratios below 1 to show the same idea.
