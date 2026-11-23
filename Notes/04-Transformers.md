@@ -1,4 +1,4 @@
-# Vision Transformers (ViT) & Retrieval Augmented Generation (RAG)
+# Retrieval Augmented Generation (RAG)
 
 ## Vision Transformers (ViT)
 
