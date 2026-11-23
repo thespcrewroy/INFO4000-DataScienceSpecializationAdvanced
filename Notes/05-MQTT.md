@@ -30,7 +30,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/5-4.jpg"/>
 </p>
 
-> Publisher with Paho MQTT: create a client, connect to the broker (`localhost` on port 1883, with a 60 second keepalive), and publish the payload `'on'` to the topic `my_topic`. The broker used in class is Mosquitto, and `test.mosquitto.org` is a free public broker for testing.
+> Publisher with Paho MQTT: create a client, connect to the broker (`localhost` on port 1883, with a 60 second keepalive), and publish the payload `'on'` to the topic `my_topic`. The broker used in class is Mosquitto, and `test.mosquitto.org` is a free public broker.
 
 <br>
 
