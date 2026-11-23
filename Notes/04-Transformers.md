@@ -191,4 +191,5 @@ The vectors point in almost the same direction, so they are very similar. Other 
 | $(2, -1)$ | $0$ | Perpendicular (unrelated) |
 | $(-1, -2)$ | $-1$ | Opposite direction |
 
-In a RAG system, the question's embedding is compared with every chunk's embedding this way, and the chunks with the highest scores are retrieved.
+In a RAG system, the question's embedding is compared with every chunk's embedding this way. <br>
+The chunks with the highest scores are retrieved.
