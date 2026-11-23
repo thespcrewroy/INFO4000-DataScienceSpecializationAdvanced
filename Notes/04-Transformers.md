@@ -1,25 +1,5 @@
 # Retrieval-Based Generation
 
-## Vision Transformers (ViT)
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-32.jpg"/>
-</p>
-
-> Vision Transformer architecture: ViT is an encoder only model. The image is treated like a sentence and its patches like tokens. Instead of a decoder, the encoder's output for the class token goes straight into a feed forward network (the MLP head) to produce the classification output.
-
-<br>
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-30.jpg"/>
-</p>
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-31.jpg"/>
-</p>
-
-> Image patching and embedding: the model's `image_processor` (ViT's version of a tokenizer) resizes and normalizes each image to match what the pretrained model expects. The image is split into patches, and the first layer linearly projects each flattened patch into a 768 value embedding. For `google/vit-base-patch16-224`, a 224 x 224 image becomes 196 patches of 16 x 16 pixels, and the learnable class token in front makes it 197 tokens. Self attention then scores how related every pair of patches is (a dog's nose patch scores high with its eye or ear patches), which gives ViT global context instead of a CNN's local receptive field. The class token's final vector goes through the classifier and softmax to produce class probabilities.
-
 ## Chatbots & Information Retrieval
 
 <p align="left">
