@@ -68,8 +68,10 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-9.jpg"/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-2.jpg"/>
 </p>
+
+> Feature Extraction with EfficientNetB0: the backbone pretrained on ImageNet stays the same (frozen), and only the final linear classifier layer (`torch.nn.Linear`) changes. Its output shape matches the number of new classes.
 
 <p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-10.jpg"/>
@@ -80,10 +82,12 @@
 <br>
 
 <p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-11.jpg"/>
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-1.jpg"/>
 </p>
 
-> The Transformer architecture has two main parts: the encoder and the decoder. The encoder reads the entire input text and understands its meaning by paying attention to all the words and their relationships. The decoder then takes this understanding and generates new text, word by word, by focusing on both the input text and what it has generated so far.
+> Convolutional Neural Network (CNN): the input image passes through repeated convolution and pooling layers that build up feature maps (feature extraction). The final feature maps are flattened into a fully connected layer that outputs a probability distribution over the classes (here Tweety at 0.7). In transfer learning, the feature extraction part is what we reuse.
+
+<br>
 
 
 ## Worked Examples
