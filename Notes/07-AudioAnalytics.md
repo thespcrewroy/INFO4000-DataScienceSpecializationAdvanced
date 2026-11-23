@@ -38,7 +38,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/7-5.jpg"/>
 </p>
 
-> Frequency and amplitude: the left column shows the same height with a higher frequency below (more cycles per second), which sounds higher in pitch. Frequency is measured in hertz (Hz). The right column shows the same frequency with a larger amplitude below, which sounds louder. Loudness is often measured with root mean square (RMS) energy. Real sounds like speech and music mix many frequencies, so a Fourier transform is used to break them apart and show which frequencies are present.
+> Frequency and amplitude: the left column shows the same height with a higher frequency below (more cycles per second), which sounds higher in pitch. Frequency is measured in hertz (Hz). The right column shows the same frequency with a larger amplitude below, which sounds louder. Loudness is often measured with root mean square (RMS) energy. Real sounds like speech and music mix many frequencies, so a Fourier transform is used to break them apart and show which frequencies are present over time.
 
 ### Sound Power and Intensity
 
