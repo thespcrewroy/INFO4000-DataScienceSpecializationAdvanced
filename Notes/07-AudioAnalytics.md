@@ -137,4 +137,4 @@ $$
 L = 10 \log_{10} \left( \frac{10}{10^{-12}} \right) = 10 \log_{10} (10^{13}) = 10 \times 13 = 130 \text{ dB}
 $$
 
-Because the scale is logarithmic, doubling the intensity only adds about 3 dB ($10 \log_{10} 2 \approx 3.01$), and every increase of 10 dB means 10 times the intensity.
+Scale is logarithmic means doubling the intensity only adds about 3 dB ($10 \log_{10} 2 \approx 3.01$), and every increase of 10 dB means 10x intensity.
