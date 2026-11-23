@@ -158,25 +158,3 @@ $$
 $$
 
 Your custom images must go through these exact steps, because the pretrained weights were learned on data prepared this way.
-
-### Exercise 2: NFL Features and Label
-
-Points differential is points scored minus points allowed:
-
-$$
-PD = PF - PA
-$$
-
-For the hypothetical Atlanta Vipers: $PD = 465 - 380 = 85$
-
-The classification label has to be created, since the table doesn't include one. A logical choice is a winning season:
-
-$$
-\text{label} =
-\begin{cases}
-1 & \text{if } W > L \\
-0 & \text{otherwise}
-\end{cases}
-$$
-
-The `W-L%` column is $\frac{W}{W + L}$ (with ties counted as half a win), so it almost directly reveals the label. Keeping it as a feature would be data leakage, which is why it gets removed.
