@@ -85,3 +85,98 @@
 
 > The Transformer architecture has two main parts: the encoder and the decoder. The encoder reads the entire input text and understands its meaning by paying attention to all the words and their relationships. The decoder then takes this understanding and generates new text, word by word, by focusing on both the input text and what it has generated so far.
 
+
+## Worked Examples
+
+### Cost Function (Mean Squared Error)
+
+The cost function measures how far a model's predictions are from the true values:
+
+$$
+J(\theta) = \frac{1}{2m} \sum_{i=1}^{m} \left( h_\theta(x_i) - y_i \right)^2
+$$
+
+- $h_\theta(x_i)$ is the model's prediction for sample $i$, and $y_i$ is the true value
+- Squaring removes negative errors so they can't cancel out positive ones
+- Dividing by $m$ takes the mean, so the cost doesn't grow just because there are more samples
+- The $\frac{1}{2}$ is there to make the math cleaner when taking the derivative during training
+
+**Example:** 3 samples with predictions $(2, 4, 6)$ and true values $(3, 4, 8)$
+
+| Sample | Prediction | True value | Error | Error² |
+|---|---|---|---|---|
+| 1 | 2 | 3 | −1 | 1 |
+| 2 | 4 | 4 | 0 | 0 |
+| 3 | 6 | 8 | −2 | 4 |
+
+$$
+J = \frac{1}{2 \times 3}(1 + 0 + 4) = \frac{5}{6} \approx 0.833
+$$
+
+### Scaling Features: Standardization and Normalization
+
+**Standardization** rescales a feature to have a mean of 0 and a standard deviation of 1:
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+**Normalization (min max scaling)** rescales a feature to the range $[0, 1]$:
+
+$$
+x' = \frac{x - x_{min}}{x_{max} - x_{min}}
+$$
+
+**Example:** the feature values $10, 20, 30$ have $\mu = 20$ and $\sigma = \sqrt{\frac{(10-20)^2 + (20-20)^2 + (30-20)^2}{3}} \approx 8.165$
+
+| $x$ | Standardized $z$ | Normalized $x'$ |
+|---|---|---|
+| 10 | $(10 - 20) / 8.165 \approx -1.225$ | $(10 - 10) / 20 = 0$ |
+| 20 | $0$ | $0.5$ |
+| 30 | $\approx 1.225$ | $1$ |
+
+**Log transformation** shrinks large values much more than small ones, which reduces skew and the pull of outliers. With $\log_{10}$, the values $10, 100, 1000$ become $1, 2, 3$.
+
+### ImageNet Input Normalization
+
+Torchvision's pretrained models expect mini batches of 3 channel RGB images shaped $(3 \times H \times W)$, where $H$ and $W$ are at least 224. Each pixel is first scaled from $[0, 255]$ to $[0, 1]$, then normalized per channel with ImageNet's mean and standard deviation:
+
+$$
+x_{norm} = \frac{x - \text{mean}_c}{\text{std}_c}
+$$
+
+| Channel | Mean | Std |
+|---|---|---|
+| Red | 0.485 | 0.229 |
+| Green | 0.456 | 0.224 |
+| Blue | 0.406 | 0.225 |
+
+**Example:** a red channel pixel with value 200
+
+$$
+\frac{200}{255} \approx 0.784 \quad \rightarrow \quad \frac{0.784 - 0.485}{0.229} \approx 1.307
+$$
+
+Your custom images must go through these exact steps, because the pretrained weights were learned on data prepared this way.
+
+### Exercise 2: NFL Features and Label
+
+Points differential is points scored minus points allowed:
+
+$$
+PD = PF - PA
+$$
+
+For the hypothetical Atlanta Vipers: $PD = 465 - 380 = 85$
+
+The classification label has to be created, since the table doesn't include one. A logical choice is a winning season:
+
+$$
+\text{label} =
+\begin{cases}
+1 & \text{if } W > L \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+The `W-L%` column is $\frac{W}{W + L}$ (with ties counted as half a win), so it almost directly reveals the label. Keeping it as a feature would be data leakage, which is why it gets removed.
