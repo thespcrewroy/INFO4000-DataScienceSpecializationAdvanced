@@ -50,7 +50,7 @@
 
 - **Beat:** the rhythm of the music
 - **Pitch:** how high or low a sound is, set by its frequency
-- **Timbre:** the quality or color of a sound, which comes from the mix of frequencies playing at once; it's why a piano and a guitar playing the same note sound different
+- **Timbre:** the quality or color of a sound that comes from the mix of frequencies playing at once
 - **Harmony:** frequencies that are whole number multiples of a base (fundamental) frequency
 
 ## Applications
