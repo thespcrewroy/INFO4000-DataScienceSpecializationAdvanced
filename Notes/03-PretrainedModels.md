@@ -1,21 +1,5 @@
 # Pretrained Models & Fine-Tuning
 
-## Recap
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-1.jpg"/>
-</p>
-
-> Convolutional Neural Network (CNN): the input image passes through repeated convolution and pooling layers that build up feature maps (feature extraction). The final feature maps are flattened into a fully connected layer that outputs a probability distribution over the classes (here Tweety at 0.7). In transfer learning, the feature extraction part is what we reuse.
-
-<br>
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-2.jpg"/>
-</p>
-
-> Feature Extraction with EfficientNetB0: the backbone pretrained on ImageNet stays the same (frozen), and only the final linear classifier layer (`torch.nn.Linear`) changes. Its output shape matches the number of new classes.
-
 ## Transformer Architecture
 
 <p align="left">
