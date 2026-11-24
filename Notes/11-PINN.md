@@ -83,9 +83,9 @@ where $\alpha$ is the thermal diffusivity, a constant for the material. This is 
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/8-6.jpg"/>
 </p>
 
-> Newton's law of cooling: a hot object, like a cup of coffee, loses heat to its surroundings at a rate proportional to the temperature difference, $\frac{dT}{dt} = -k(T - T_s)$, where $T$ is the object's temperature, $T_s$ is the surroundings (room) temperature, and $k$ is the cooling constant. The temperature drops quickly at first and then levels off toward room temperature. It's a first order ODE, which keeps the calculus simple.
+> Newton's law of cooling: a hot object, like a cup of coffee, loses heat to its surroundings at a rate proportional to the temperature difference, $\frac{dT}{dt} = -k(T - T_s)$, where $T$ is the object's temperature, $T_s$ is the surroundings (room) temperature, and $k$ is the cooling constant. The temperature drops quickly at first and then levels off toward room temperature. It's a first order ODE.
 
-**The exercise:** you measured a cup of coffee's temperature at minutes 0, 10, and 30 and want a neural network that predicts its temperature at any minute $t$.
+You measured a cup of coffee's temperature at minutes 0, 10, and 30 and want a neural network that predicts its temperature at any minute.
 
 - **With a standard neural network,** the input is $t$, the output is the predicted temperature $\hat{T}$, and the loss is the MSE against the 3 measurements. With only 3 points, the network has no idea what happens between minutes 10 and 30, and it can fit any curve through those points, even ones that rise or wiggle.
 - **With a PINN,** the loss adds a physics term that forces $\hat{T}$ to obey the law of cooling everywhere, not just at the measured points:
