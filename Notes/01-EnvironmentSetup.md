@@ -157,13 +157,17 @@ uv run streamlit run app.py
 
 ## How uv Keeps Environments Reproducible
 
-- **`pyproject.toml`** lists the packages your project needs, following the PEP 621 standard. `uv add` and `uv remove` update it for you.
-- **`uv.lock`** records the exact version of every package, including the packages they depend on. Anyone who runs `uv sync` gets the same versions on Windows, macOS, or Linux.
-- **`.venv`** is the project's virtual environment folder, holding its own Python interpreter and packages. uv creates and updates it automatically.
-- **Global cache:** uv stores each downloaded package once in a shared cache and hard links it into each project's `.venv`, so ten projects using the same package don't take ten times the disk space.
+- **`pyproject.toml`** lists the packages your project needs following the PEP 621 standard
+- **`uv.lock`** records the exact version of every package including the packages they depend on
+- **`.venv`** is the project's virtual environment folder that holds its own Python interpreter and packages
+- **Global cache:** uv stores each downloaded package once in a shared cache and hard links it into each project's `.venv`
 
 > [!IMPORTANT]\
-> Commit `pyproject.toml` and `uv.lock` to Git so others get the same environment. Don't commit `.venv` (uv rebuilds it with `uv sync`), and don't edit `uv.lock` by hand.
+> Commit `pyproject.toml` and `uv.lock` to Git so others get the same environment
+
+> [!IMPORTANT]\
+> Don't commit `.venv` (uv rebuilds it with `uv sync`), and don't edit `uv.lock` by hand.
+
 
 ## Troubleshooting & FAQ
 
@@ -171,13 +175,13 @@ uv run streamlit run app.py
 No. uv downloads and manages the exact Python version the project needs the first time you run `uv sync` or `uv run`.
 
 **`command not found` when running a package's command (like `streamlit`)?**\
-The package is installed inside `.venv`, but your shell isn't using that environment. Put `uv run` in front of the command, such as `uv run streamlit run app.py`. Or, activate the environment first with `source .venv/bin/activate` (macOS / Linux) or `.venv\Scripts\activate` (Windows).
+The package is installed inside `.venv`, but your shell isn't using that environment. Put `uv run` in front of the command, such as `uv run streamlit run app.py`. Or, activate the environment first with `source .venv/bin/activate` or `.venv\Scripts\activate`.
 
 **`uv: command not found` right after installing?**\
 Close and reopen your terminal so it picks up the new install.
 
 **VS Code isn't picking up my packages.**\
-Press `Ctrl+Shift+P` (`Cmd+Shift+P` on Mac), choose **Python: Select Interpreter**, and select the interpreter inside your project's `.venv` folder.
+Press `Ctrl+Shift+P`, choose **Python: Select Interpreter**, and select the interpreter inside your project's `.venv` folder.
 
 **How do I update uv?**\
 Run `uv self update`. If you installed uv with Homebrew, run `brew upgrade uv` instead, since `uv self update` only works with the standalone installer.
