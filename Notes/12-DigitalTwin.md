@@ -84,7 +84,7 @@ The simulation has two classes:
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-8.jpg"/>
 </p>
 
-> A motor digital twin class: `MotorDT` stores its torque constant, friction, speed, and torque. Each `update` computes torque as $K_t \times \text{{current}} - \text{{friction}} \times \text{{speed}}$, then updates speed from torque over the time step `dt`, assuming an inertia of 1 for simplicity.
+> A motor digital twin class: `MotorDT` stores its torque constant, friction, speed, and torque. Each `update` computes torque as $K_t \times \text{current} - \text{friction} \times \text{speed}$, then updates speed from torque over the time step `dt`, assuming an inertia of 1 for simplicity.
 
 4. **Ingest data and close the feedback loop.** Data can come from sensors, logs, APIs, or user input, read from files, streams, databases, MQTT, or REST APIs.
 
@@ -139,7 +139,7 @@ If $\lambda(t)$ spikes past a threshold based on the user's history, the twin fl
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-11.jpg"/>
 </p>
 
-> PID control loop: the controller measures the error between the set point and the output, then adds three terms. The proportional term $K_p e(t)$ reacts to the current error, the integral term $K_i \int e(\tau) \, d\tau$ adds up past error to remove any leftover offset, and the derivative term $K_d \frac{{de(t)}}{{dt}}$ reacts to how fast the error is changing, which adds damping. Their sum drives the process, and the output is fed back to calculate the next error.
+> PID control loop: the controller measures the error between the set point and the output, then adds three terms. The proportional term $K_p e(t)$ reacts to the current error, the integral term $K_i \int e(\tau) \, d\tau$ adds up past error to remove any leftover offset, and the derivative term $K_d \frac{de(t)}{dt}$ reacts to how fast the error is changing, which adds damping. Their sum drives the process, and the output is fed back to calculate the next error.
 
 <br>
 
