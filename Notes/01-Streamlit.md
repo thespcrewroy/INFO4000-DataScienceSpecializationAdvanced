@@ -56,8 +56,6 @@
 
 > Transfer Learning in Natural Langauge Processing.
 
-## Modern AI Tools: Agents and AgenticAI
-
 <p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-8.jpg"/>
 </p>
