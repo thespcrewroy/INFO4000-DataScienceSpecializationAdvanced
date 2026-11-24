@@ -26,7 +26,7 @@ A standard neural network's test has one question: how well did you match the da
 |---|---|
 | Need less data, since they already "know" the physics | Training can take a lot of computing power |
 | Handle problems that are hard for traditional methods, like complex shapes or incomplete information | The physics has to be known, and if our understanding is wrong, the predictions will be too |
-| Can run some simulations much faster than traditional physics simulators | Very complex physics can be too hard to write into the loss |
+| Simulations much faster than traditional physics simulators | Very complex physics can be too hard to write into the loss |
 
 ## Example: Lake Temperature
 
