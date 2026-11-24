@@ -66,7 +66,41 @@ where $\alpha$ is the thermal diffusivity, a constant for the material. This is 
 4. Compute those derivatives with PyTorch's automatic differentiation
 5. Minimize the total loss, data loss plus physics loss
 
+## Example: RC Circuit
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/8-4.jpg"/>
+</p>
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/8-5.jpg"/>
+</p>
+
+> Resistor capacitor (RC) circuit: a resistor R and a capacitor C are connected in series to a voltage source $V_s$. When the switch closes, a step input voltage $V(t) = V_0$ starts charging the capacitor from 0 V (the initial condition $V_C(0) = 0$). The capacitor voltage rises quickly during the transient period, reaches about 63% of the source voltage after one time constant $\tau = RC$, and levels off at the steady state after about $5\tau$. The PINN's job is to predict $V_C(t)$, and its physics loss comes from the governing equation $V(t) = V_C(t) + RC \frac{dV_C(t)}{dt}$.
+
+## Class Exercise: Newton's Law of Cooling
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/8-6.jpg"/>
+</p>
+
+> Newton's law of cooling: a hot object, like a cup of coffee, loses heat to its surroundings at a rate proportional to the temperature difference, $\frac{dT}{dt} = -k(T - T_s)$, where $T$ is the object's temperature, $T_s$ is the surroundings (room) temperature, and $k$ is the cooling constant. The temperature drops quickly at first and then levels off toward room temperature. It's a first order ODE, which keeps the calculus simple.
+
+**The exercise:** you measured a cup of coffee's temperature at minutes 0, 10, and 30 and want a neural network that predicts its temperature at any minute $t$.
+
+- **With a standard neural network,** the input is $t$, the output is the predicted temperature $\hat{T}$, and the loss is the MSE against the 3 measurements. With only 3 points, the network has no idea what happens between minutes 10 and 30, and it can fit any curve through those points, even ones that rise or wiggle.
+- **With a PINN,** the loss adds a physics term that forces $\hat{T}$ to obey the law of cooling everywhere, not just at the measured points:
+
+$$
+\text{Loss}_{physics} = \text{mean}\left( \frac{d\hat{T}}{dt} + k(\hat{T} - T_{env}) \right)^2
+\qquad
+\text{Loss}_{total} = \text{Loss}_{data} + \lambda \cdot \text{Loss}_{physics}
+$$
+
+- **If the room temperature isn't constant,** $T_{env}$ can be given as a function of time $T_{env}(t)$, either as an extra network input or from measurements plugged into the physics loss.
+
 ## PyTorch Automatic Differentiation
+
+PINNs put the governing ODEs or PDEs into the loss function, and checking them requires the derivatives of the network's output with respect to its inputs. Automatic differentiation gives exact derivatives, unlike numerical methods such as finite differences, which only approximate them and can be computationally expensive.
 
 PyTorch's `torch.autograd` module computes derivatives automatically for any tensor created with `requires_grad=True`. Neural networks already use it for backpropagation, and PINNs use it to get first and second order partial derivatives of the output with respect to the inputs.
 
@@ -171,3 +205,73 @@ which is 0 when the deeper point is denser (physically consistent) and positive 
 | 999.8 kg/m³ | 999.5 kg/m³ | $\max(0, 0.3) = 0.3$ | No, so the cost function is penalized |
 
 Adding this penalty (often squared, $0.3^2 = 0.09$) to the loss steers the model away from predictions that break the known relationship.
+
+### RC Circuit Charging
+
+For a step input $V_0$ and an uncharged capacitor, the solution to $V_0 = V_C + RC \frac{dV_C}{dt}$ is
+
+$$
+V_C(t) = V_0 \left( 1 - e^{-t/\tau} \right)
+\qquad
+\tau = RC
+$$
+
+**Example:** $R = 1000 \ \Omega$ and $C = 0.001$ F give $\tau = 1000 \times 0.001 = 1$ second. With $V_0 = 5$ V:
+
+| Time | Calculation | $V_C$ | Share of $V_0$ |
+|---|---|---|---|
+| $t = 0$ | $5(1 - e^{0})$ | 0 V | 0% |
+| $t = \tau = 1$ s | $5(1 - e^{-1})$ | ≈ 3.16 V | ≈ 63% |
+| $t = 5\tau = 5$ s | $5(1 - e^{-5})$ | ≈ 4.97 V | ≈ 99% |
+
+**Checking the physics:** $\frac{dV_C}{dt} = \frac{V_0}{\tau} e^{-t/\tau}$, so
+
+$$
+V_C + RC \frac{dV_C}{dt} = V_0 - V_0 e^{-t/\tau} + \tau \cdot \frac{V_0}{\tau} e^{-t/\tau} = V_0
+$$
+
+The equation holds at every $t$, so a PINN predicting this curve has a physics loss of 0.
+
+### Newton's Law of Cooling: Why the Physics Helps
+
+Suppose the real coffee follows $T(t) = 20 + 70 e^{-0.1t}$ (room at 20°C, starting at 90°C, $k = 0.1$ per minute). The three measurements are:
+
+| Minute | 0 | 10 | 30 |
+|---|---|---|---|
+| Temperature | 90°C | ≈ 45.75°C | ≈ 23.49°C |
+
+**What a data only model might predict at minute 20:** a straight line between minutes 10 and 30 gives $\hat{T}(20) \approx 34.62$°C, with a slope of $\frac{23.49 - 45.75}{20} \approx -1.11$°C per minute.
+
+**Checking it against the physics:** at 34.62°C, the law of cooling says the slope should be
+
+$$
+\frac{dT}{dt} = -0.1 (34.62 - 20) \approx -1.46 \text{ °C per minute}
+$$
+
+The residual is $-1.11 - (-1.46) \approx 0.35$, not 0, so the physics loss penalizes this guess. The true value at minute 20 is $20 + 70e^{-2} \approx 29.47$°C, and the physics loss is what pulls the PINN toward it, even though minute 20 was never measured.
+
+### Checking an ODE With Autograd
+
+The slides practice differentiation on the equation $\frac{dx}{dt} = t \frac{d^2 x}{dt^2}$. Try $x(t) = t^2$:
+
+$$
+\frac{dx}{dt} = 2t
+\qquad
+\frac{d^2 x}{dt^2} = 2
+\qquad
+t \cdot 2 = 2t
+$$
+
+Both sides match, so the residual $\frac{dx}{dt} - t \frac{d^2 x}{dt^2}$ is 0. In PyTorch:
+
+```python
+import torch
+
+t = torch.tensor(3.0, requires_grad=True)
+x = t ** 2
+
+dx_dt = torch.autograd.grad(x, t, create_graph=True)[0]  # 2t = 6
+d2x_dt2 = torch.autograd.grad(dx_dt, t)[0]               # 2
+residual = dx_dt - t * d2x_dt2                           # 6 - 3*2 = 0
+```
+
