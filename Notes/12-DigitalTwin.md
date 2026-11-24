@@ -165,7 +165,7 @@ If $\lambda(t)$ spikes past a threshold based on the user's history, the twin fl
 
 ### Practical Additions
 
-- **Integral clamping (anti windup):** $I_k = \text{clip}(I_{k-1} + e \cdot dt, \ I_{min}, \ I_{max})$, so the integral can't grow without bound while the actuator is maxed out
+- **Integral clamping:** $I_k = \text{clip}(I_{k-1} + e \cdot dt, \ I_{min}, \ I_{max})$, so the integral can't grow without bound while the actuator is maxed out
 - **Torque saturation:** when the controller asks for more than the motor can produce, the command is clipped to the motor's limit
 - **The closed loop:** PID calculates a nudge $u$ from the current error, the plant simulation finds the new state $y$, the new error $r - y$ is computed, and the loop repeats every tick of the clock
 
