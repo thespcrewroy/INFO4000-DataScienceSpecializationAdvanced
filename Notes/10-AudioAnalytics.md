@@ -16,6 +16,14 @@
 
 > A digital audio waveform: in a computer, audio is just a long, ordered sequence of numbers. Each number is the amplitude (how far the air pressure moved, which we hear as loudness) at one instant, scaled here between −1 and 1. This plot covers about 6 minutes of a song, like an MP3 recorded on your phone. Where an image is a grid of pixels, audio is a line of samples over time.
 
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-11.jpg"/>
+</p>
+
+> Audio signals as waveforms: ten everyday sound classes from the UrbanSound8K dataset (dog bark, children playing, car horn, air conditioner, street music, gun shot, siren, engine idling, jackhammer, and drilling). Each class has its own shape, like the sharp spikes of a gunshot compared with the steady texture of an air conditioner. Exercise 8 uses three of these classes.
+
 ## Sampling
 
 <p align="left">
@@ -161,6 +169,14 @@
 
 > Short time Fourier transform (STFT): a window slides across the input signal with a set window length, moving forward by the hop length so neighboring windows overlap. Each windowed segment goes through an FFT, producing one spectrum per segment. Stacking those spectra side by side over time is exactly what a spectrogram is.
 
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-12.jpg"/>
+</p>
+
+> From waveforms to features: two sound waves (a and c) and their MFCCs (b and d). The MFCC heatmaps turn each waveform into a compact grid of coefficients over time that a model can classify.
+
 ## Python Packages
 
 - **librosa:** Python package for music and audio analysis, used for loading audio and extracting features like MFCCs, spectral centroid, and zero crossing rate. Install with `uv add librosa soundfile` (the slides show `pip install`).
@@ -200,6 +216,12 @@ mel_spec = T.MelSpectrogram(sample_rate=sr, n_mels=64)(waveform)  # input for a 
 The dataset has audio files of three sounds (dog bark, street music, and drilling) and a CSV with each file's name and class ID. The task is to extract features from the audio files, train a classical ML classifier, save the model, and deploy it with Streamlit to predict the three provided samples. The write up answers which features were extracted, what other preprocessing was done, and how good the predictions were.
 
 ## Applications
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-13.jpg"/>
+</p>
+
+> Audio classification: a waveform's features pass through a neural network and a classifier, which outputs a probability for each class, here dog barking at 0.81, car horn at 0.05, and drill at 0.03.
 
 - **Speech recognition:** voice assistants like Siri and Google Assistant turn spoken words into text
 - **Music genre classification:** services like Spotify and Apple Music analyze audio features to categorize and recommend songs

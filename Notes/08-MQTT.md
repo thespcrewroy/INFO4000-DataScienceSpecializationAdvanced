@@ -11,6 +11,14 @@
 <br>
 
 <p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-14.jpg"/>
+</p>
+
+> Communication technology applications: several temperature sensors publish readings (20°C) to the MQTT broker, and the computers subscribed to that topic receive them. The same publish and subscribe pattern connects factory sensors, smart homes, and vehicles.
+
+<br>
+
+<p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/5-2.jpg"/>
 </p>
 

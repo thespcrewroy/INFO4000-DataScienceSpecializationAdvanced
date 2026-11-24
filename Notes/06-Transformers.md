@@ -27,6 +27,14 @@
 ## NLP With Pretrained Transformer Models
 
 <p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-7.jpg"/>
+</p>
+
+> Transfer learning in NLP: a model is pretrained on a large text corpus to become a pretrained language model, then adapted (fine tuned) on a small set of annotated data, producing a fine tuned model for a specific task.
+
+<br>
+
+<p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/3-6.jpg"/>
 </p>
 

@@ -1,23 +1,14 @@
-# Data Augmentation, APIs, & Transfer Learning
-
-## SQL and Relational Databases
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-1.jpg"/>
-</p>
-
-> Relational Database Management System
-
-
-## Postman App APIs
-
-<p align="left">
-  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-2.jpg"/>
-</p>
-
-> Deploy a model as a service via an API
+# Transfer Learning
 
 ## Intro to Transfer Learning
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-5.jpg"/>
+</p>
+
+> Deep learning vs. transfer learning: training from scratch means learning features and training a classifier on a large public dataset, which takes hours or days. Transfer learning reuses those learned features without new training and only trains a classifier on a small local dataset, which takes minutes.
+
+<br>
 
 <p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/2-3.jpg"/>
@@ -89,6 +80,11 @@
 
 <br>
 
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/1-6.jpg"/>
+</p>
+
+> Freezing vs. fine tuning: a network pretrained on a large labeled dataset is transferred to a similar task with a small labeled dataset. Its convolutional layers are frozen, while the final fully connected and sigmoid layers are fine tuned. The table shows what to do based on dataset size and similarity. With a small dataset, train a classifier on the highest level features (similar data) or only the lower level features (different data). With a large dataset, fine tune either way.
 
 ## Worked Examples
 
@@ -116,30 +112,6 @@ $$
 $$
 J = \frac{1}{2 \times 3}(1 + 0 + 4) = \frac{5}{6} \approx 0.833
 $$
-
-### Scaling Features: Standardization and Normalization
-
-**Standardization** rescales a feature to have a mean of 0 and a standard deviation of 1:
-
-$$
-z = \frac{x - \mu}{\sigma}
-$$
-
-**Normalization (min max scaling)** rescales a feature to the range $[0, 1]$:
-
-$$
-x' = \frac{x - x_{min}}{x_{max} - x_{min}}
-$$
-
-**Example:** the feature values $10, 20, 30$ have $\mu = 20$ and $\sigma = \sqrt{\frac{(10-20)^2 + (20-20)^2 + (30-20)^2}{3}} \approx 8.165$
-
-| $x$ | Standardized $z$ | Normalized $x'$ |
-|---|---|---|
-| 10 | $(10 - 20) / 8.165 \approx -1.225$ | $(10 - 10) / 20 = 0$ |
-| 20 | $0$ | $0.5$ |
-| 30 | $\approx 1.225$ | $1$ |
-
-**Log transformation** shrinks large values much more than small ones, which reduces skew and the pull of outliers. With $\log_{10}$, the values $10, 100, 1000$ become $1, 2, 3$.
 
 ### ImageNet Input Normalization
 
