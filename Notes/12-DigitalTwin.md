@@ -201,7 +201,7 @@ In Python, `scipy.integrate.solve_ivp` handles this for you. Its default RK45 me
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-16.jpg"/>
 </p>
 
-> Decorators: a decorator is a function that takes another function, adds functionality, and returns the modified version. Here, `@decorator` wraps `greet()` so it prints a message before and after the greeting. The `@` syntax goes on the line just before the definition.
+> Decorators: a decorator is a function that takes another function, adds functionality, and returns the modified version. Here, `@decorator` wraps `greet()` so it prints a message before and after the greeting. The `@` goes on the line before the definition.
 
 <br>
 
@@ -235,7 +235,7 @@ The takeaway: once tuned, the PINN tracked the target without wild oscillation o
 
 ## Use Case: The Inverted Pendulum
 
-An inverted pendulum is balanced upright above its pivot. Gravity pulls it down, so it's unstable and hard to control, which makes it the classic control problem. The twin uses a PINN to simulate the physics and a PID controller to keep it upright, all in code with no CAD or real hardware.
+An inverted pendulum is balanced upright above its pivot. Gravity pulls it down, so it's unstable and hard to control, which makes it the classic control problem. The twin uses a PINN to simulate the physics and a PID controller to keep it upright, all in code with no CAD.
 
 **Physics:**
 
