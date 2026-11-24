@@ -63,8 +63,8 @@ The simulation has two classes:
 
 - **Set point:** the desired target temperature
 - **Hysteresis (dead band):** the twin only switches on below the band and off above it, which prevents rapid cycling
-- **Feedback loop:** the twin's command changes the room, and the room's new temperature is fed back to the twin, making it a true control system
-- **Ambient temperature:** the outside temperature the room drifts toward when nothing is running. If the room is heated to 24°C on a 15°C day, it cools toward 15°C when the heater is off. On a 35°C day, an air conditioned room at 24°C warms toward 35°C when the A/C is off.
+- **Feedback loop:** the twin's command changes the room, and the room's new temperature is fed back to the twin
+- **Ambient temperature:** the outside temperature the room drifts toward. If the room is heated to 24°C on a 15°C day, it cools toward 15°C when the heater is off. On a 35°C day, an air conditioned room at 24°C warms toward 35°C when the A/C is off.
 
 ## Using ML in Digital Twins
 
