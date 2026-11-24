@@ -184,7 +184,7 @@ Close and reopen your terminal so it picks up the new install.
 Press `Ctrl+Shift+P`, choose **Python: Select Interpreter**, and select the interpreter inside your project's `.venv` folder.
 
 **How do I update uv?**\
-Run `uv self update`. If you installed uv with Homebrew, run `brew upgrade uv` instead, since `uv self update` only works with the standalone installer.
+Run `uv self update`. Run `brew upgrade uv` if you installed with Homebrew instead.
 
 ## More Help
 
