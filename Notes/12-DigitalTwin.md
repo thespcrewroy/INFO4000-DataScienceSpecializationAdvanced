@@ -245,7 +245,7 @@ u = m l^2 \ddot{\theta} + b \dot{\theta} + m g l \sin\theta
 \ddot{\theta} = \frac{u - b\dot{\theta} - m g l \sin\theta}{m l^2}
 $$
 
-where $u$ is the applied torque, $m$ the mass, $l$ the length, $b$ the viscous friction (damping), and $g$ gravity. RK4 solves it numerically with step $dt$.
+where $u$ is the applied torque, $m$ the mass, $l$ the length, $b$ the viscous friction (damping), and $g$ gravity. RK4 solves it numerically with step $dt$
 
 **The two sides of the twin:**
 
