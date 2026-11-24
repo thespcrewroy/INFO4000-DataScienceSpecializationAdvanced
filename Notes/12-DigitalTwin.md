@@ -294,7 +294,7 @@ $$
 \frac{dT}{dt} = \frac{P - h(T - T_{amb})}{m \, c_p}
 $$
 
-**Example:** heater power $P = 2000$ W, heat loss coefficient $h = 20$ W/°C, $m \, c_p = 5000$ J/°C, ambient temperature 20°C, and the oven currently at 100°C.
+Heater power $P = 2000$ W, heat loss coefficient $h = 20$ W/°C, $m \, c_p = 5000$ J/°C, ambient temperature 20°C, and the oven at 100°C.
 
 $$
 \text{heat loss} = 20 \times (100 - 20) = 1600 \text{ W}
