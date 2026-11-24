@@ -61,7 +61,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 ```
 
 > [!IMPORTANT]\
-> After the installer finishes, close and reopen your terminal so it can find the `uv` command.
+> Close and reopen your terminal so it can find the `uv` command after the installer finishes.
 
 ### Verify the Installation
 
