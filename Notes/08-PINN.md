@@ -111,7 +111,7 @@ $$
 \text{Loss}_{total} = \text{Loss}_{data} + \lambda \cdot \text{Loss}_{physics}
 $$
 
-$\lambda$ sets how much the physics counts compared with the data. Suppose a model has $\text{Loss}_{data} = 0.04$ and $\text{Loss}_{physics} = 0.5$:
+$\lambda$ sets how much the physics counts compared with the data. Suppose a model has Loss_data = 0.04 and Loss_physics = 0.5:
 
 | $\lambda$ | Calculation | Total loss | Effect |
 |---|---|---|---|
@@ -170,4 +170,4 @@ which is 0 when the deeper point is denser (physically consistent) and positive 
 | 999.5 kg/m³ | 999.8 kg/m³ | $\max(0, -0.3) = 0$ | Yes |
 | 999.8 kg/m³ | 999.5 kg/m³ | $\max(0, 0.3) = 0.3$ | No, so the cost function is penalized |
 
-Adding this penalty (often squared, $0.3^2 = 0.09$) to the loss steers the model away from predictions that break the known relationship, even where there's no measured data.
+Adding this penalty (often squared, $0.3^2 = 0.09$) to the loss steers the model away from predictions that break the known relationship.
