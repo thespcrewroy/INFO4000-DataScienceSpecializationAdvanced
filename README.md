@@ -60,7 +60,7 @@ INFO 3000 (Experiential Data Science Specialization - Intermediate)
 * Ollama
 * Hugging Face
 * Virtual Environments (`.venv`, `.toml`, `uv.lock`)
-* Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`, `requests`, `pandas`, `sqlite3`, `torch`, `torchvision`, `torchinfo`, `transformers`, `accelerate`, `evaluate`, `datasets`, `diffusers`, `huggingface_hub`, `dotenv`, `sentence-transformers`, `paho-mqtt`, `gymnasium`, `Stable-Baselines3`, `librosa`, `soundfile`, `torchaudio`
+* Packages: `numpy`, `matplotlib`, `plotly`, `altair`, `sklearn`, `joblib`, `streamlit`, `requests`, `pandas`, `sqlite3`, `torch`, `torchvision`, `torchinfo`, `transformers`, `accelerate`, `evaluate`, `datasets`, `diffusers`, `huggingface_hub`, `dotenv`, `sentence-transformers`, `paho-mqtt`, `gymnasium`, `Stable-Baselines3`, `librosa`, `soundfile`, `torchaudio`, `mcp[cli]`
 
  [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)](#topics)
 
