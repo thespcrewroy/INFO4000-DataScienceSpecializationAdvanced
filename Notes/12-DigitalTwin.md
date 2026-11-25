@@ -270,6 +270,116 @@ The pipeline runs the plant, logs telemetry, trains the PINN, and saves the arti
 
 **Why it matters:** the PINN learns the physics, so the equations don't have to be hand coded, and the PID provides real world control. Physics informed AI plus classical control is the state of the art for digital twins.
 
+## Deep Dive: A Simple Baking Oven Twin (PINN + PI)
+
+This week rebuilds the oven more simply: learn the oven's thermal physics, train a neural network using only the governing equation (no temperature labels), and use the trained network as a virtual oven controlled by a PI controller. The goal is clarity, not a full industrial baking model.
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-18.jpg"/>
+</p>
+
+> What we're modeling: an electric heater supplies energy, the oven loses heat to the cooler room around it (at $T_a$), and one temperature, read by a single sensor, represents the whole oven. This is a lumped thermal model, so there are no x, y, or z coordinates, and it predicts the average oven temperature rather than the food's. The heater command ranges from 0% to 100%.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-19.jpg"/>
+</p>
+
+> Governing physics, Newton's cooling plus heating: stored heat ($C \frac{dT}{dt}$) equals heater input ($P_{max} u$) minus heat loss ($k(T - T_a)$). It's an ODE, not a PDE, because temperature isn't modeled across positions. The class uses illustrative values, not ones calibrated from a real oven: $T_a = 25$°C, $C = 10{,}000$ J/°C, $P_{max} = 2{,}000$ W, $k = 10$ W/°C, and a 10 second control interval.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-20.jpg"/>
+</p>
+
+> What the PINN learns: $T_\theta(\tau, T_0, u)$ takes the temperature at the start of a short interval ($T_0$), the heater power held fixed during it ($u$), and the time elapsed within it ($\tau$, 0 to 10 s), and predicts the temperature $\tau$ seconds later. It answers questions like: if the oven is at 100°C and the heater goes to 60%, what will it read 10 seconds later? A direct ODE solver is simpler and more accurate for an equation this simple, but the oven is a clear way to learn physics informed training, which pays off when the physics is complex or must be combined with lots of data.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-21.jpg"/>
+</p>
+
+> Generating the training inputs: the code randomly samples a starting temperature ($T_0$ from 25 to 225°C), a heater power ($u$ from 0 to 1), and an elapsed time ($\tau$ from 0 to 10 s), and combines them into many $(\tau, T_0, u)$ triples called collocation points. They are operating conditions, not measured temperatures, so they have no labels, and no PID is involved in making them. The PINN learns by satisfying the oven ODE at all of them. (The picture says 200°C for the upper limit of $T_0$, but the code uses 225°C.)
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-22.jpg"/>
+</p>
+
+> Training without temperature labels: (1) the PINN predicts a temperature at a sampled input, (2) PyTorch's autodiff (`torch.autograd.grad` with respect to $\tau$) calculates that prediction's rate of change, (3) the rate is compared with what the ODE requires, and (4) the weights are updated to reduce the disagreement. This repeats until the physics loss is small, so the physical law itself acts as the teacher.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-23.jpg"/>
+</p>
+
+> The physics loss: the error $e$ is the gap between the PINN's slope $\frac{\partial T_\theta}{\partial \tau}$ and the slope the physics requires, $\frac{P_{max} u - k(T_\theta - T_a)}{C}$, and $L_{physics}$ is the mean of $e^2$. There's no data loss. The initial condition $T_\theta(0, T_0, u) = T_0$ is built into the network's output formula, so it always holds exactly and needs no separate loss term. The partial derivative symbol appears only because the network has three inputs. The oven physics is still an ODE.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-24.jpg"/>
+</p>
+
+> Validate before control: the PINN and the exact reference solution of the same ODE (`oven.py`) get the same test inputs, ones not used in training, and their absolute error is compared. The reference is the simplified ODE's exact solution, not real oven data.
+
+**The project files:**
+
+| File | Role |
+|---|---|
+| `pinn.py` | Defines the PINN, generates collocation samples, trains, and predicts the next temperature |
+| `pid.py` | Calculates the heater command from the temperature error |
+| `oven.py` | Holds the physics constants and the exact lumped ODE reference used for validation |
+| `main.py` | Trains, validates, runs the control loops, and plots the results |
+| `oven_pinn.pt` | The saved trained network weights |
+
+`pinn.py` and `pid.py` carry the main ideas (learning and control). The exact solution in `oven.py` never supplies training labels. It only checks the PINN afterward.
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-25.jpg"/>
+</p>
+
+> The PI controller: the error is $e = T_{set} - T$ and the control law is $u = K_p e + K_i \int e \, dt + K_d \frac{de}{dt}$, with the heater command clamped to 0 to 100%. P reacts to the temperature error and I eliminates sustained error. The D term is turned off ($K_d = 0$) because an oven is a slow thermal system and PI control is enough. The trained PINN oven is the plant, and its temperature is fed back to compute the next error.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-26.jpg"/>
+</p>
+
+> The experiment: start at 25°C, target 180°C for the first 60 minutes, then 160°C for the next 30. Two closed loop simulations run side by side, one with a PI controller driving the trained PINN oven and one with an identical PI controller driving the reference ODE oven. Each controller sees its own model's temperature, so their heater commands are similar but not necessarily identical.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-27.jpg"/>
+</p>
+
+> The results: on top, the PINN oven and the reference oven nearly overlap and track the setpoint. On the bottom, the heater runs near 100% to warm up, then settles at a lower sustaining level. When the setpoint drops to 160°C at minute 60, the heater cuts out, the oven cools, and the heater comes back at a new, lower level. A small temporary undershoot is possible. Overlapping curves are encouraging, but a numerical error metric is still needed to measure accuracy.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-28.jpg"/>
+</p>
+
+> Explaining the results with physics: at a steady temperature, stored energy stops changing, so $0 = P_{max} u - k(T - T_a)$, which gives $u = \frac{k(T - T_a)}{P_{max}}$. That predicts sustaining power of 77.5% at 180°C and 67.5% at 160°C, matching the plateaus in the heater plot. Don't confuse these with the 100% warm up phase.
+
+<br>
+
+<p align="left">
+  <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-29.jpg"/>
+</p>
+
+> What was built: a physics only PINN that learns a family of solutions to the lumped oven ODE, used as a virtual oven inside a closed loop PI controller and checked against an independent reference ODE. It isn't a complete real oven digital twin, since it has no real sensor connection, no spatial heat field, and assumed parameters. Natural next steps would be using measured temperatures to estimate unknown $C$ or $k$, adding a disturbance like opening the oven door, and moving to a 1D spatial heat PDE.
+
+**Takeaway:** (1) sample operating conditions, (2) enforce the oven ODE through the PINN loss, (3) train a reusable temperature predictor, (4) connect it to PI/PID feedback, (5) compare with the exact ODE reference, and (6) interpret the curves using physics.
+
 ## Worked Examples
 
 ### Thermostat Hysteresis
@@ -393,3 +503,69 @@ u = m g l \sin(\pi - 0.1) = 9.81 \times 0.0998 \approx 0.98 \text{ N·m}
 $$
 
 **Wrapped error:** if the target is $\pi$ and the measured angle is $-3.0$ rad (the same position as $+3.28$ rad), the raw error is $\pi - (-3.0) \approx 6.14$ rad, almost a full turn. Wrapping it into the range $-\pi$ to $\pi$ gives $6.14 - 2\pi \approx -0.14$ rad, so the controller makes a small correction instead of spinning the pendulum all the way around.
+
+### Simple Oven: One Interval by Hand
+
+The oven ODE $C \frac{dT}{dt} = P_{max} u - k(T - T_a)$ has an exact solution for a fixed $u$ over an interval:
+
+$$
+T(\tau) = T_{ss} + (T_0 - T_{ss}) \, e^{-k\tau / C}
+\qquad
+T_{ss} = T_a + \frac{P_{max} u}{k}
+$$
+
+where $T_{ss}$ is the temperature the oven would settle at if $u$ never changed. With the class values ($T_a = 25$°C, $C = 10{,}000$ J/°C, $P_{max} = 2000$ W, $k = 10$ W/°C), start at $T_0 = 100$°C with the heater at $u = 0.6$:
+
+$$
+T_{ss} = 25 + \frac{2000 \times 0.6}{10} = 145 \text{°C}
+$$
+
+$$
+T(10) = 145 + (100 - 145) \, e^{-10 \times 10 / 10{,}000} = 145 - 45 \times 0.99005 \approx 100.45 \text{°C}
+$$
+
+**Sanity check:** at the start of the interval, the ODE says the slope is $\frac{2000(0.6) - 10(100 - 25)}{10{,}000} = \frac{1200 - 750}{10{,}000} = 0.045$°C per second, so about 0.45°C over 10 seconds. That matches. This is the "if the oven is at 100°C and the heater goes to 60%" question the PINN learns to answer.
+
+### Simple Oven: Physics Loss at One Collocation Point
+
+Suppose that at the sampled point $(\tau = 10, \ T_0 = 100, \ u = 0.6)$, the PINN predicts $T_\theta = 100.5$°C with a slope of $\frac{\partial T_\theta}{\partial \tau} = 0.05$°C per second. The slope the physics requires at that temperature is
+
+$$
+\frac{2000(0.6) - 10(100.5 - 25)}{10{,}000} = \frac{1200 - 755}{10{,}000} = 0.0445
+$$
+
+$$
+e = 0.05 - 0.0445 = 0.0055
+\qquad
+e^2 \approx 0.00003
+$$
+
+The physics loss averages $e^2$ over thousands of points like this one, and training pushes it toward 0.
+
+### Simple Oven: Sustaining Power and Warm Up Time
+
+**Sustaining power** at steady state, $u = \frac{k(T - T_a)}{P_{max}}$:
+
+| Setpoint | Calculation | Sustaining power |
+|---|---|---|
+| 180°C | $\frac{10(180 - 25)}{2000}$ | 77.5% |
+| 160°C | $\frac{10(160 - 25)}{2000}$ | 67.5% |
+
+**Warm up time at full power:** with $u = 1$, $T_{ss} = 25 + \frac{2000}{10} = 225$°C, and the oven's time constant is $\frac{C}{k} = \frac{10{,}000}{10} = 1000$ s. Solving $180 = 225 + (25 - 225)e^{-t/1000}$:
+
+$$
+t = -1000 \ln\left(\frac{225 - 180}{225 - 25}\right) = -1000 \ln(0.225) \approx 1492 \text{ s} \approx 25 \text{ minutes}
+$$
+
+That's why the heater sits near 100% for roughly the first 25 minutes of the experiment before dropping to its sustaining level.
+
+### Building In the Initial Condition
+
+One common way to build the initial condition into a PINN's output is
+
+$$
+T_\theta(\tau, T_0, u) = T_0 + \tau \cdot \text{NN}(\tau, T_0, u)
+$$
+
+At $\tau = 0$, the second term vanishes, so $T_\theta(0, T_0, u) = T_0$ no matter what the network $\text{NN}$ outputs. The initial condition is a hard constraint that always holds, so the loss only needs the physics term.
+
