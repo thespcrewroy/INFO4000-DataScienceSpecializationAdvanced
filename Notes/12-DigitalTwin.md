@@ -50,7 +50,7 @@
 
 The simulation has two classes:
 
-- **`PhysicalRoom`** simulates the room's own thermal dynamics: heating, cooling, and natural drift toward the ambient (outside) temperature.
+- **`PhysicalRoom`** simulates the room's own thermal dynamics: heating, cooling, and natural drift toward the ambient temperature.
   - `__init__`: sets the initial and ambient temperatures and the heat and cool rates
   - `get_temperature`: returns the room's current temperature
   - `apply_dynamics`: raises or lowers the temperature based on the HVAC command, plus drift toward ambient
