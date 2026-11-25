@@ -76,7 +76,7 @@ These work for a single prompt, a reusable skill, a defined tool, or a multi ste
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/14-4.jpg"/>
 </p>
 
-> Agents above the control layer: control stays deterministic, with PLCs and PID loops running in milliseconds on fixed, tested logic. Agents work above it, observing, diagnosing, and recommending, but never closing the fast loop. The stack runs from the advisory AI agent, to SCADA/HMI (operator view and approval), to the PLC (real time control and interlocks), to the sensors and actuators of the physical process. The agent loop is read tags, form a hypothesis, run an analysis, then recommend. Guardrails keep it read only by default, require operator approval for any setpoint change, and enforce limits in the controller, so advice only flows down through human approval.
+> Agents above the control layer: control stays deterministic, with PLCs and PID loops running in milliseconds on fixed, tested logic. Agents work above it, observing, diagnosing, and recommending, but never closing the fast loop. The stack runs from the advisory AI agent, to SCADA/HMI (operator view and approval), to the PLC (real time control and interlocks), to the sensors and actuators of the physical process. The agent loop is read tags, form a hypothesis, run an analysis, then recommend. Guardrails keep it read only by default, require operator approval for any setpoint change, and enforce limits in the controller.
 
 <br>
 
