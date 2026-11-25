@@ -150,7 +150,7 @@ If $\lambda(t)$ spikes past a threshold based on the user's history, the twin fl
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-13.jpg"/>
 </p>
 
-> How the gains change the response: in the first graph, a larger integral gain ($K_i = 2$) reaches the target faster but overshoots and oscillates, while a smaller one ($K_i = 0.5$) is slow but smooth. In the second, proportional control alone ($K_p = 4$) settles below the set temperature, adding integral gain ($K_i = 3$) removes that offset but oscillates more, and adding derivative gain ($K_d = 2$) damps the oscillation.
+> How the gains change the response: in the first graph, a larger integral gain ($K_i = 2$) reaches the target faster but overshoots and oscillates, while a smaller one ($K_i = 0.5$) is slow but smooth. In the second, proportional control alone ($K_p = 4$) settles below the set temperature, adding integral gain ($K_i = 3$) removes that offset but oscillates more.
 
 <br>
 
