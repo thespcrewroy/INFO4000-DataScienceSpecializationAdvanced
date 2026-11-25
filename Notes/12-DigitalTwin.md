@@ -6,7 +6,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-1.jpg"/>
 </p>
 
-> A digital twin of an electric motor: a digital twin is a functional model of a real system, roughly 3D modeling plus a physics model. It can simulate the system's complete operation, so you can get insights and test operating conditions in software instead of on the real hardware.
+> A digital twin of an electric motor: a functional model of a real system, roughly 3D modeling plus a physics model. It can simulate the system's complete operation, so you can get insights and test operating conditions in software instead of on the real hardware.
 
 <br>
 
