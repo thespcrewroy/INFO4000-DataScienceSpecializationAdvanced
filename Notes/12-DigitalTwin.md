@@ -30,7 +30,7 @@
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-4.jpg"/>
 </p>
 
-> From physical object to digital twin: the main enabling factors are sensors that gather data and a processing system that turns it into useful information. That data is fed into the digital copy, which can then run simulations, study performance issues, and suggest improvements.
+> From physical object to digital twin: the main enabling factors are sensors that gather data and a processing system that turns it into useful information. That data is fed into the digital copy, which can then run simulation and suggest improvements.
 
 <br>
 
