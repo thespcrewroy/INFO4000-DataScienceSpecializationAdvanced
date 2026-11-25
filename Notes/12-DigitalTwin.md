@@ -78,7 +78,7 @@ The simulation has two classes:
 
 1. **Define the system and its goal.** What system are we modeling? What are its inputs, outputs, and states? Is the goal to predict, optimize, or alert? Examples: a motor twin that predicts torque at 500 RPM, an oven twin that predicts when food is done, or a banking twin that predicts fraud risk.
 2. **Identify the physics or rules.** What laws govern the system, and can they be written as equations? If not, can ML or a PINN approximate them? Examples: DC motor torque $= K \cdot I$ (current) with a friction term, oven heat balance $\frac{dT}{dt} = \frac{\text{Power} - \text{Heat Loss}}{m \cdot c_p}$, and a bank fraud rule like (amount > 5 × average) + (transactions per second > 0.5) + (new device).
-3. **Build the core model.** Define classes for the system, its inputs, states, and outputs, and its update rules (dynamics, equations, or ML logic).
+3. **Build the core model.** Define classes for the system, its inputs, states, and outputs, and its update rules.
 
 <p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-8.jpg"/>
