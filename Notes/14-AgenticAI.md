@@ -684,7 +684,7 @@ Week 11 builds the whole stack step by step with one running example, in four fi
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/14-78.jpg"/>
 </p>
 
-> Putting it together: the **model** (`qwen3:4b` in Ollama) chooses which tool to call; `agent.py` is the MCP client plus the loop, carrying requests and results; `server.py` is the MCP server that lists and runs the tools; and `tools.py` holds plain functions, the only place with engineering logic. The `divider-lab/` folder holds `tools.py`, `server.py`, `client.py` (no model), `agent.py` (with a model), `multi_agent.py` (two agents), `pyproject.toml`, `tests/`, and `README.md`. Each layer works alone: tools run without MCP and the server runs without a model, so swapping the model changes nothing below it, and adding a tool only changes `tools.py` and one line of `server.py`.
+> Putting it together: the **model** (`qwen3:4b` in Ollama) chooses which tool to call; `agent.py` is the MCP client plus the loop, carrying requests and results; `server.py` is the MCP server that lists and runs the tools; and `tools.py` holds plain functions, the only place with engineering logic. The `divider-lab/` folder holds `tools.py`, `server.py`, `client.py` (no model), `agent.py` (with a model), `multi_agent.py` (two agents), `pyproject.toml`, `tests/`, and `README.md`. Each layer works alone: tools run without MCP and the server runs without a model, so swapping the model changes nothing below it, and adding a tool only changes `tools.py` mostly.
 
 <br>
 
