@@ -593,7 +593,7 @@ Week 11 builds the whole stack step by step with one running example, in four fi
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/14-67.jpg"/>
 </p>
 
-> Client step 1, start the server and open a session: `StdioServerParameters` describes how to launch the server as a command and its arguments, using `sys.executable` so the server runs on the same Python and packages, with the full path to `server.py`. `stdio_client` starts the subprocess, `ClientSession` speaks the protocol, and `initialize()` is the handshake, which always comes first.
+> Client step 1, start the server and open a session: `StdioServerParameters` describes how to launch the server as a command and its arguments, using `sys.executable` so the server runs on the same Python and packages, with the full path to `server.py`. `stdio_client` starts the subprocess, `ClientSession` speaks the protocol, and `initialize()` is the handshake, and is first.
 
 <br>
 
