@@ -339,7 +339,7 @@ The `defect_triage_demo` project solves the same problem as a single agent, a wo
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/14-36.jpg"/>
 </p>
 
-> Method 1, single agent: the free text report goes to one model with four tools (`lookup_part`, `defect_stats`, `find_similar`, `severity_policy`), which loops by calling a tool, reading the result, and deciding the next step, then returns JSON with the severity, team, action, and summary. The model decides which tool to call, in what order, and when to stop. Its strength is flexibility with little code; its risk is that it can skip a step, send the wrong arguments, or guess a severity. The audit panel checks the trace, not what the model claims.
+> Method 1, single agent: the free text report goes to one model with four tools (`lookup_part`, `defect_stats`, `find_similar`, `severity_policy`), which loops by calling a tool, reading the result, and deciding the next step, then returns JSON with the severity, team, action, and summary. The model decides which tool to call, in what order, and when to stop. Its strength is flexibility with little code; its risk is that it can skip a step, send the wrong arguments, or guess a severity. The audit panel checks the trace.
 
 <br>
 
