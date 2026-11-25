@@ -272,7 +272,7 @@ The pipeline runs the plant, logs telemetry, trains the PINN, and saves the arti
 
 ## Deep Dive: A Simple Baking Oven Twin (PINN + PI)
 
-This week rebuilds the oven more simply: learn the oven's thermal physics, train a neural network using only the governing equation (no temperature labels), and use the trained network as a virtual oven controlled by a PI controller. The goal is clarity, not a full industrial baking model.
+This week learns the oven's thermal physics, train a neural network using only the governing equation (no temperature labels), and use the trained network as a virtual oven controlled by a PI controller. The goal is clarity, not a full industrial baking model.
 
 <p align="left">
   <img src="https://github.com/thespcrewroy/INFO4000-DataScienceSpecializationAdvanced/blob/main/Notes/assets/12-18.jpg"/>
