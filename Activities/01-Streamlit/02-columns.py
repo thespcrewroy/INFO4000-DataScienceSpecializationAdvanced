@@ -1,3 +1,5 @@
+"""This is a simple Streamlit app to demonstrate the use of columns."""
+
 import streamlit as st
 
 """

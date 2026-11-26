@@ -1,11 +1,11 @@
+"""This is a comprehensive Streamlit form that collects user information."""
 from time import time
 import streamlit as st
 
-"""
-This is a comprehensive Streamlit form that collects user information.
-"""
+"""Create a title for the Streamlit app."""
 st.title("Comprehensive Streamlit Form")
 
+"""Create a form in Streamlit to collect user information."""
 with st.form("my_form"):
     st.header("User Information")
     name = st.text_input("Name") # text input for username
@@ -20,7 +20,8 @@ with st.form("my_form"):
     uploaded_file = st.file_uploader("Upload a Profile Picture", type=["png", "jpg", "jpeg"]) # file uploader for profile picture
     favorite_color = st.color_picker("Pick a Favorite Color") # color picker for favorite color
     submitted = st.form_submit_button("Submit") # submit button for the form
-    
+
+    """Check if the form is submitted and display the entered information."""
     if submitted:
         st.success("Form submitted successfully!")
         st.write("### Entered Information :")

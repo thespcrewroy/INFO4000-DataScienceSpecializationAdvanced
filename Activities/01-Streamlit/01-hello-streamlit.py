@@ -1,8 +1,7 @@
+"""This is a simple Streamlit app that displays a title and a welcome message."""
 import streamlit as st
 
-"""
-This is a simple Streamlit app to demonstrate the basic functionality.
-"""
+"""Create a title and a welcome message for the Streamlit app."""
 st.title("My First Streamlit App")
 st.write("Hello, everyone!")
 st.write("Welcome to your first Streamlit app... Happy Learning !!!!")
